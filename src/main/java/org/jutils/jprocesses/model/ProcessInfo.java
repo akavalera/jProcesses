@@ -26,6 +26,7 @@ import java.util.Map;
 public class ProcessInfo {
 
     private String pid;
+    private String parentPid;
     private String time;
     private String name;
     private String user;
@@ -61,6 +62,14 @@ public class ProcessInfo {
 
     public void setPid(String pid) {
         this.pid = pid;
+    }
+
+    public String getParentPid() {
+        return parentPid;
+    }
+
+    public void setParentPid(String pid) {
+        this.parentPid = parentPid;
     }
 
     public String getTime() {
