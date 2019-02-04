@@ -35,7 +35,7 @@ import org.jutils.jprocesses.util.ProcessesUtils;
 class UnixProcessesService extends AbstractProcessesService {
 
     //Use BSD sytle to get data in order to be compatible with Mac Systems(thanks to jkuharev for this tip)
-    private static final String PS_COLUMNS = "pid,ppid,ruser,vsize,rss,%cpu,lstart,cputime,nice,ucomm";
+    private static final String PS_COLUMNS = "pid,ppid,ruser,vsize,rss,%cpu,lstart,cputime,nice,command";
     private static final String PS_FULL_COMMAND = "pid,command";
 
     private static final int PS_COLUMNS_SIZE = PS_COLUMNS.split(",").length;
@@ -99,14 +99,14 @@ class UnixProcessesService extends AbstractProcessesService {
     protected String getProcessesData(String name) {
         if (name != null) {
             if (OSDetector.isLinux()) {
-                return ProcessesUtils.executeCommand("ps",
+                return ProcessesUtils.executeCommand("ps", "-c",
                         "-o", PS_COLUMNS, "-C", name);
             } else {
                 this.nameFilter = name;
             }
         }
         return ProcessesUtils.executeCommand("ps",
-                "-e", "-o", PS_COLUMNS);
+                "-e", "-c", "-o", PS_COLUMNS);
     }
 
     @Override
