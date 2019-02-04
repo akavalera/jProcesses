@@ -69,7 +69,7 @@ public class ProcessInfo {
     }
 
     public void setParentPid(String pid) {
-        this.parentPid = parentPid;
+        this.parentPid = pid;
     }
 
     public String getTime() {
