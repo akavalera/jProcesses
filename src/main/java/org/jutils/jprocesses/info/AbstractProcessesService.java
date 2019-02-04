@@ -74,6 +74,7 @@ abstract class AbstractProcessesService implements ProcessesService {
         for (final Map<String, String> map : mapList) {
             ProcessInfo info = new ProcessInfo();
             info.setPid(map.get("pid"));
+            info.setParentPid(map.get("ppid"));
             info.setName(map.get("proc_name"));
             info.setTime(map.get("proc_time"));
             info.setCommand((map.get("command") != null) ? map.get("command") : "");
