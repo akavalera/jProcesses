@@ -16,11 +16,7 @@
 package org.jutils.jprocesses.info;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.jutils.jprocesses.model.JProcessesResponse;
 import org.jutils.jprocesses.model.ProcessInfo;
@@ -79,7 +75,10 @@ class UnixProcessesService extends AbstractProcessesService {
                 }
                 element.put("proc_time", elements[index++]);
                 element.put("priority", elements[index++]);
-                element.put("proc_name", elements[index++]);                
+                String procName = elements[index];
+                if(elements.length - 1 > index)
+                    procName += " " + elements[index + 1];
+                element.put("proc_name", procName);
                 // first init full command by content of proc_name
                 element.put("command", elements[index - 1]);
 
