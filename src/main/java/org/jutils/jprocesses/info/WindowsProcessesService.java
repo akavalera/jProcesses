@@ -71,7 +71,7 @@ class WindowsProcessesService extends AbstractProcessesService {
         tmpMap.put(WORKINGSETSIZE_PROPNAME, "physical_memory");
         tmpMap.put(COMMANDLINE_PROPNAME, "command");
         tmpMap.put(CREATIONDATE_PROPNAME, "start_time");
-        tmpMap.put(PARENT_PROCESSID_PROPNAME, "ppid")
+        tmpMap.put(PARENT_PROCESSID_PROPNAME, "ppid");
         keyMap = Collections.unmodifiableMap(tmpMap);
     }
 
